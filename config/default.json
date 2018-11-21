@@ -2,5 +2,8 @@
 	"express": {
 		"port": 5757,
 		"host": "localhost"
+	},
+	"mongo": {
+		"uris": "mongodb://localhost:27017/miasystem"
 	}
 }
