@@ -1,0 +1,30 @@
+{
+  "name": "miasystem-backend",
+  "version": "1.0.0",
+  "description": "miasystem backend",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --progress --display-error-details"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.0.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.13",
+    "reflect-metadata": "^0.1.12",
+    "routing-controllers": "^0.7.7"
+  },
+  "devDependencies": {
+    "@types/config": "0.0.34",
+    "@types/express": "^4.16.0",
+    "@types/mongoose": "^5.3.1",
+    "nodemon-webpack-plugin": "^4.0.3",
+    "ts-loader": "^5.3.0",
+    "typescript": "^3.1.6",
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
