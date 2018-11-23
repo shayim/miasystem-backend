@@ -1,5 +1,5 @@
 import * as express from 'express'
-import { useExpressServer, Action } from 'routing-controllers'
+import { Action, useExpressServer } from 'routing-controllers'
 import { controllers } from '../services/controllers'
 
 export class Express {
@@ -31,6 +31,7 @@ export class Express {
           next: express.NextFunction
         ) => {
           if (error) {
+            console.log(`**** GLOBAL ERROR ****\n${error.message}`)
             res.status(500).end()
           }
         }

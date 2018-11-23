@@ -1,17 +1,16 @@
+import { Response } from 'express'
 import {
-  JsonController,
+  Authorized,
+  Body,
+  Delete,
   Get,
+  JsonController,
+  Param,
   Post,
   Put,
-  Delete,
-  Body,
-  Res,
-  Param,
-  Authorized,
   QueryParams,
+  Res,
 } from 'routing-controllers'
-import { Response } from 'express'
-
 import { ClientModel } from './../../../data/models/client.model'
 
 @JsonController('/api/clients')
@@ -34,8 +33,8 @@ export class ClientController {
       // TODO format Response
       return res.json(clients)
     } catch (error) {
-      // TODO error handling
-      console.log(error)
+      // TODO error handling ??? Handled by Global
+      // console.log(`**** ClientController GETALL ****\n${error.message}`))
       throw error
     }
   }
@@ -48,8 +47,8 @@ export class ClientController {
 
       return res.json(client)
     } catch (error) {
-      // TODO error handling
-      console.log(error)
+      // TODO error handling ??? Handled by Global
+      // console.log(`**** ClientController GETONEBY ****\n${error.message}`)
       throw error
     }
   }
@@ -58,13 +57,12 @@ export class ClientController {
   async Post(@Body() client, @Res() res: Response) {
     try {
       // TODO class validator
-      console.log('post')
       let newClient = new ClientModel({ ...client })
       newClient = await newClient.save()
       return res.status(201).json(newClient)
     } catch (error) {
-      // TODO error handling
-      console.log(error)
+      // TODO error handling ??? Handled by Global
+      // console.log(`**** ClientController POST ****\n${error.message}`)
       throw error
     }
   }
@@ -81,8 +79,8 @@ export class ClientController {
       if (!clientUpdated) return res.status(404).json({ message: 'not found' })
       return res.status(200).json(clientUpdated)
     } catch (error) {
-      // TODO error handling
-      console.log(error)
+      // TODO error handling ??? Handled by Global
+      // console.log(`**** ClientController PUT ****\n${error.message}`)
       throw error
     }
   }
@@ -94,8 +92,8 @@ export class ClientController {
       if (!clientDeleted) return res.status(404).json({ message: 'not found' })
       return res.sendStatus(204)
     } catch (error) {
-      // TODO error handling
-      console.log(error)
+      // TODO error handling ??? Handled by Global
+      // console.log(`**** ClientController DELETE ****\n${error.message}`)
       throw error
     }
   }
