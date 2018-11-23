@@ -1,5 +1,5 @@
 import * as express from 'express'
-import { useExpressServer } from 'routing-controllers'
+import { useExpressServer, Action } from 'routing-controllers'
 import { controllers } from '../services/controllers'
 
 export class Express {
@@ -13,6 +13,14 @@ export class Express {
 
       useExpressServer(this.app, {
         controllers: controllers,
+        authorizationChecker: async (action: Action, roles: []) => {
+          const token = (<express.Request>action.request).headers['authorization']
+
+          // TODO check token validation
+          if (token === '123') return true
+
+          return false
+        },
       })
 
       this.app.use(

@@ -40,6 +40,7 @@ export class ClientController {
     }
   }
 
+  @Authorized()
   @Get('/:id')
   async GetOneBy(@Param('id') clientId: string, @Res() res: Response) {
     try {
