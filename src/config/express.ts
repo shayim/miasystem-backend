@@ -15,7 +15,18 @@ export class Express {
         controllers: controllers,
       })
 
-      this.app.get('/', (req, res) => res.end('hello'))
+      this.app.use(
+        (
+          error: any,
+          req: express.Request,
+          res: express.Response,
+          next: express.NextFunction
+        ) => {
+          if (error) {
+            res.status(500).end()
+          }
+        }
+      )
     }
     return this.app
   }
