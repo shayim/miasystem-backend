@@ -31,8 +31,9 @@ export class Express {
           next: express.NextFunction
         ) => {
           if (error) {
+            // TODO logger
             console.log(`**** GLOBAL ERROR ****\n${error.message}`)
-            res.status(500).json({ errorMessage: error.message })
+            if (!res.headersSent) return res.json({ errorMessage: error.message })
           }
         }
       )

@@ -50,7 +50,7 @@ export class ClientController {
       return res.json(client)
     } catch (error) {
       // TODO error handling ??? Handled by Global
-      // console.log(`**** ClientController GETONEBY ****\n${error.message}`)
+      console.log(`**** ClientController GETONEBY ****\n${error.message}`)
       throw error
     }
   }
@@ -65,7 +65,7 @@ export class ClientController {
       return res.status(201).json(newClient)
     } catch (error) {
       // TODO error handling ??? Handled by Global
-      console.log(`**** ClientController POST ****\n${error.message}`)
+      // console.log(`**** ClientController POST ****\n${error.message}`)
       throw error
     }
   }
