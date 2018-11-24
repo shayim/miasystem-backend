@@ -10,7 +10,9 @@ import {
   Put,
   QueryParams,
   Res,
+  UseBefore,
 } from 'routing-controllers'
+import { checkJwt } from '../../middlewares/auth0/auth0.middleware'
 import { ClientModel } from './../../../data/models/client.model'
 
 @JsonController('/api/clients')
@@ -53,6 +55,7 @@ export class ClientController {
     }
   }
 
+  @UseBefore(checkJwt)
   @Post()
   async Post(@Body() client, @Res() res: Response) {
     try {
@@ -62,7 +65,7 @@ export class ClientController {
       return res.status(201).json(newClient)
     } catch (error) {
       // TODO error handling ??? Handled by Global
-      // console.log(`**** ClientController POST ****\n${error.message}`)
+      console.log(`**** ClientController POST ****\n${error.message}`)
       throw error
     }
   }

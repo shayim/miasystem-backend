@@ -32,7 +32,7 @@ export class Express {
         ) => {
           if (error) {
             console.log(`**** GLOBAL ERROR ****\n${error.message}`)
-            res.status(500).end()
+            res.status(500).json({ errorMessage: error.message })
           }
         }
       )
